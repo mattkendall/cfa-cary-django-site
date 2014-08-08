@@ -13,8 +13,17 @@ def search(request):
 		query = request.GET['q']
 		if query:
 			permits = Permit.text.search(query) # full text search in one line!
+                        # Determine the bounding-box around this search query:
+                        ids = permits.values_list('id', flat=True)
+                        if len(ids) > 0:
+                            bbox = Permit.objects.filter(id__in=ids).extent()
+                        else: 
+                            bbox = []
 			# convert each matching Permit into a small_dict and convert to JSON.
-			response = json.dumps([ p.to_small_dict() for p in permits ])
+			response = json.dumps({
+                            'matches': [ p.to_small_dict() for p in permits ],
+                            'bbox': list(bbox)
+                        })
 	return HttpResponse(response, content_type='application/json')
 
 def permitsat(request):

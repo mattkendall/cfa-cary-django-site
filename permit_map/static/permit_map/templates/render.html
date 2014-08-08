@@ -5,9 +5,6 @@
 	Note the use of Bootstrap 3 CSS classes to get basic layouts and 
 	styles.  Could roll our own, use bootstrap, or use a different library.
 -->
-<div id="map">
-	<!-- Render Google Map into this div -->
-</div>
 <!--
 	Search box DIV
 -->
@@ -33,43 +30,50 @@
 <!--
 	If the list is visible (ng-if) then show this pane. Could also use ng-show
 -->
-<div class="list col-lg-3" ng-if="list.visible">
-	<div class="list-contents">
-		<!-- If there aren't any matches, then show this small error paragraph -->
-		<p ng-if="list.permits.length == 0">No matches.</p>
-		<!-- 
-			Render one div for each permit in our list. On click, 
-			call $scope.list.select(this permit). Change the 
-			background style if selected.
-		-->
-		<div ng-repeat="result in list.permits" ng-click="list.select(result)" ng-style="{ 'background': result.selected ? '#eee' : 'none' }" id="{{ result.id }}">
-			<!-- 
-				Simple template for our permit data. Heavy 
-				usage of Angular data bindings and display.
-			-->
-			<h4>{{ result.name }}</h4>
-			<table class="table">
-				<tr ng-if="result.category">
-					<th class="col-md-3">Catgory</th>
-					<td>{{ result.category }}</td>
-				</tr>
-				<tr ng-if="result.proj_id">
-					<th class="col-md-3">Project Id</th>
-					<td>{{ result.proj_id }}</td>
-				</tr>
-				<tr ng-if="result.status">
-					<th class="col-md-3">Status</th>
-					<td>{{ result.status }}</td>
-				</tr>
-				<tr ng-if="result.comment">
-					<th class="col-md-3">Comment</th>
-					<td>{{ result.comment }}</td>
-				</tr>
-				<tr ng-if="result.link">
-					<th class="col-md-3">Link</th>
-					<td><a href="{{ result.link }}" target="_new">Open</a></td>
-				</tr>
-			</table>
+<div class="ui">
+	<div class="expando">
+		<div class="list col-lg-3" ng-if="list.visible">
+			<div class="list-contents">
+				<!-- If there aren't any matches, then show this small error paragraph -->
+				<p ng-if="list.permits.length == 0">No matches.</p>
+				<!-- 
+					Render one div for each permit in our list. On click, 
+					call $scope.list.select(this permit). Change the 
+					background style if selected.
+				-->
+				<div ng-repeat="result in list.permits" ng-click="list.select(result)" ng-style="{ 'background': result.selected ? '#eee' : 'none' }" id="{{ result.id }}">
+					<!-- 
+						Simple template for our permit data. Heavy 
+						usage of Angular data bindings and display.
+					-->
+					<h4>{{ result.name }}</h4>
+					<table class="table">
+						<tr ng-if="result.category">
+							<th class="col-md-3">Catgory</th>
+							<td>{{ result.category }}</td>
+						</tr>
+						<tr ng-if="result.proj_id">
+							<th class="col-md-3">Project Id</th>
+							<td>{{ result.proj_id }}</td>
+						</tr>
+						<tr ng-if="result.status">
+							<th class="col-md-3">Status</th>
+							<td>{{ result.status }}</td>
+						</tr>
+						<tr ng-if="result.comment">
+							<th class="col-md-3">Comment</th>
+							<td>{{ result.comment }}</td>
+						</tr>
+						<tr ng-if="result.link">
+							<th class="col-md-3">Link</th>
+							<td><a href="{{ result.link }}" target="_new">Open</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
+	</div>
+	<div id="map">
+		<!-- Render Google Map into this div -->
 	</div>
 </div>

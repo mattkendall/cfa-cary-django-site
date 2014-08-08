@@ -5,13 +5,20 @@
 /*
  * Make the google map full screen and in the background
  */
-#map {
-	position: absolute;
+.ui {
+	position: fixed;
 	height: 100%;
 	width: 100%;
-	z-index: 0;
 	left: 0;
 	top: 0;
+}
+#map {
+	/*position: absolute;*/
+	height: 100%;
+	/*width: 100%;*/
+	z-index: 0;
+	/*left: 0;
+	top: 0;*/
 }
 
 /*
@@ -23,7 +30,7 @@
 	margin: 20px;
 	padding: 5px;
 	z-index: 100;
-	right: 0;
+	left: 0;
 	top: 0;
 	width:470px;
 }
@@ -35,14 +42,14 @@
  * things are moved around.
  */
 .list {
-	position: absolute;
+	/*position: absolute;*/
 	background: #fff;
 	height: 100%;
 	margin: 0px;
 	padding: 75px 25px 5px 25px;
 	z-index: 50;
-	right: 0;
-	top: 0;
+	/*right: 0;
+	top: 0;*/
 	width:520px;
 }
 /*
