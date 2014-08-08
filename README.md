@@ -86,6 +86,7 @@ postgres# createuser -P
   n
   n
 postgres# psql -c "GRANT ALL PRIVILEGES ON DATABASE cfac TO cfac;"
+postgres# psql -f /home/matt/code-for-cary/cfa-cary-django-site/permit_map/init.sql cfac
 ```
 
 We're now ready to install the necessary python requirements. From within the 
